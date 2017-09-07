@@ -16,6 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="ys"
 plugins=(git scala sbt docker)
 source $ZSH/oh-my-zsh.sh
+autoload -U colors && colors
 echo "ZSH configured..."
 
 ##
@@ -23,8 +24,9 @@ echo "ZSH configured..."
 #
 export HOMEBREW_PREFIX=/usr/local/homebrew
 
+echo "$fg[green][Preparing Java]$reset_color"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_131)
-echo "Settings JAVA_HOME to [$JAVA_HOME]"
+echo "\tJAVA_HOME := [$JAVA_HOME]"
 
 ## GNU Global tagging configuration
 #export GTAGSCONF=/usr/local/share/gtags/gtags.conf
@@ -42,25 +44,27 @@ echo "Settings JAVA_HOME to [$JAVA_HOME]"
 #
 # This prevails the default Clang compiler from Apple that comes with XCode, wonder if this would
 # cause any potential build issues?
-echo "Using manuall Clang compiler from LLVM..."
+echo "$fg[green][Prepating LLVM & C/C++]$reset_color"
+
+echo "\tUsing manuall Clang compiler from LLVM..."
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-
 
 ###############################################################################################
 ## Additional Plugins
 ###############################################################################################
 
+echo "$fg[green][Additional Plugins]$reset_color"
+
 #
 # :: ZSH Synthax Highlighting ::
 #
-echo "Loading the ZSH synthax highliting..."
+echo "\tLoading the ZSH synthax highliting..."
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #
 # :: ZSH Synthax Highlighting ::
 #
-echo "Configuring autojump package..."
+echo "\tConfiguring autojump package..."
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 source $HOME/.dotfiles/macos/aliases
