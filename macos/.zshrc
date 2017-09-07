@@ -45,6 +45,8 @@ echo "Settings JAVA_HOME to [$JAVA_HOME]"
 echo "Using manuall Clang compiler from LLVM..."
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
+
+
 ###############################################################################################
 ## Additional Plugins
 ###############################################################################################
@@ -61,3 +63,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 echo "Configuring autojump package..."
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+source $HOME/.dotfiles/macos/aliases

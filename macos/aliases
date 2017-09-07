@@ -1,0 +1,4 @@
+
+echo 'Preparing env aliases...'
+
+alias bubu='brew update && brew upgrade'
