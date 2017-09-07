@@ -1,14 +1,29 @@
+#+TITLE: Shell Configuration for MacOS
+#+AUTHOR: Aleksandr Ivanov
+#+BABEL: :cache yes
 
 * ZSH Configuration for MacOS
   This file contains an untangle, Borg-based configuration for my shell-environment
 ** Essentials  
+Essentials environment variables.
+ - [ ] #TODO :: Probably Homebrew config doesn't really belong here.
 
 #+BEGIN_SRC sh 
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export EDITOR=emacs
+export HOMEBREW_PREFIX=/usr/local/homebrew
 #+END_SRC
 
+This sections makes a bunch of fixes:
+ - Set the size of tabs. For some reason my default size if 8, which i'm not happy with. Probably this should be better configured via the terminal, but i haven't seen anything
+ - Support for better colouring 
+
+#+BEGIN_SRC sh
+tabs 4
+autoload -U colors && colors
+#+END_SRC   
+ 
 ** Preparing ZSH 
 #+BEGIN_SRC sh
 echo "$fg[green][Preparing ZSH]$reset_color"
@@ -19,7 +34,6 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="ys"
 plugins=(git scala sbt docker)
 source $ZSH/oh-my-zsh.sh
-autoload -U colors && colors
 #+END_SRC
 
 ** Preparing Java
@@ -36,8 +50,9 @@ echo "\tJAVA_HOME := [$JAVA_HOME]"
 #+BEGIN_SRC sh
 echo "$fg[green][Prepating LLVM & C/C++]$reset_color"
 #+END_SRC
+
 #+BEGIN_SRC sh
-echo "\tUsing manuall Clang compiler from LLVM..."
+echo "\tUsing LLVM Clang compiler over the Apple's XCode Clang..."
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 #+END_SRC
 ** Additional plugins

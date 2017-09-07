@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+":"; exec emacs --quick --script "$0" "$@" # -*- mode: emacs-lisp; lexical-binding: t; -*-
+
+(load "~/.emacs.d/scripted/scripted.el")
+
+(add-to-list 'load-path (expand-file-name "modules/org/org-mode/lisp" user-emacs-directory))
+(require 'org)
+(message "Using Org-mode v%s" org-version)
+
+(setq dotfiles-root-for-macos  "~/.dotfiles/macos"
+      shell-config-folder      (f-join dotfiles-root-for-macos "shell")
+      shell-config-org-file    (f-join shell-config-folder "config.org")
+      shell-config-target-file "~/.zshrc")
+
+;; Tangle the configuration file
+(if (not (file-exists-p shell-config-org-file))
+    (error " >> %s doesn't exists, can't continue" shell-config-org-file))
+
+(message "Tangling Shell configuration file from %s into %s" shell-config-org-file shell-config-target-file)
+
+;; Check if the ~/.zshrc file exists, this needs to be replaced
+(if (file-exists-p shell-config-target-file)
+    (progn 
+      (message "File '%s' already exists, removing..." shell-config-target-file)
+      (delete-file shell-config-target-file)))
+
+(org-babel-tangle-file shell-config-org-file shell-config-target-file)
+
+(message "Done")
