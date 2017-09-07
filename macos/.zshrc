@@ -8,6 +8,7 @@
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export EDITOR=emacs
+export HOMEBREW_PREFIX=/usr/local/homebrew
 
 #
 # :: ZSH Configuration ::
@@ -22,7 +23,6 @@ echo "ZSH configured..."
 ##
 # Preparing the env
 #
-export HOMEBREW_PREFIX=/usr/local/homebrew
 
 echo "$fg[green][Preparing Java]$reset_color"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_131)
@@ -62,7 +62,7 @@ echo "\tLoading the ZSH synthax highliting..."
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #
-# :: ZSH Synthax Highlighting ::
+# :: Autojump ::
 #
 echo "\tConfiguring autojump package..."
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

@@ -1,0 +1,66 @@
+
+* ZSH Configuration for MacOS
+  This file contains an untangle, Borg-based configuration for my shell-environment
+** Essentials  
+
+#+BEGIN_SRC sh 
+export TERM=xterm-256color
+export LANG=en_US.UTF-8
+export EDITOR=emacs
+#+END_SRC
+
+** Preparing ZSH 
+#+BEGIN_SRC sh
+echo "$fg[green][Preparing ZSH]$reset_color"
+#+END_SRC
+
+#+BEGIN_SRC sh
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="ys"
+plugins=(git scala sbt docker)
+source $ZSH/oh-my-zsh.sh
+autoload -U colors && colors
+#+END_SRC
+
+** Preparing Java
+#+BEGIN_SRC sh
+echo "$fg[green][Preparing Java]$reset_color"
+#+END_SRC
+
+#+BEGIN_SRC sh
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_131)
+echo "\tJAVA_HOME := [$JAVA_HOME]"
+#+END_SRC
+
+** Preparing LLVM & C/C++
+#+BEGIN_SRC sh
+echo "$fg[green][Prepating LLVM & C/C++]$reset_color"
+#+END_SRC
+#+BEGIN_SRC sh
+echo "\tUsing manuall Clang compiler from LLVM..."
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+#+END_SRC
+** Additional plugins
+#+BEGIN_SRC sh
+echo "$fg[green][Additional Plugins]$reset_color"
+#+END_SRC
+*** ZSH Highlighting
+#+BEGIN_SRC sh
+echo "\tLoading the ZSH synthax highliting..."
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#+END_SRC    
+*** Autojump
+#+BEGIN_SRC sh
+echo "\tConfiguring autojump package..."
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+#+END_SRC
+** Aliases
+*** Homebrew support
+#+BEGIN_SRC sh
+alias bubu="brew update && brew upgrade"
+#+END_SRC
+
+* TODOs
+ - [ ] Add description how to tangle this file using Org-mode
+ - [ ] Bootstrap configuration using =.el= script
+ - [ ] Need to add some checks for ZSH installation
