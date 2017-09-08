@@ -26,4 +26,7 @@
 
 (org-babel-tangle-file shell-config-org-file shell-config-target-file)
 
-(message "Done")
+;; Reloads the shell configuration
+(message "\nReloading current session")
+(message "\n%s" (shell-command-to-string "source ~/.zshrc"))
+

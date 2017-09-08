@@ -30,10 +30,33 @@ echo "$fg[green][Preparing ZSH]$reset_color"
 #+END_SRC
 
 #+BEGIN_SRC sh
-export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="ys"
-plugins=(git scala sbt docker)
-source $ZSH/oh-my-zsh.sh
+  export ZSH=$HOME/.oh-my-zsh
+  ZSH_THEME="ys"
+  plugins=(
+      # shell extension to jump to frequently used directories
+      autojump
+      # Homebrew support
+      brew 
+      # adds colors to manpages
+      colored-man-pages 
+      # cat with syntax highlight support
+      colorize
+      # Self descriptive
+      per-directory-history
+      # extras: git-extras gitfast git-flow git-flow-avh git-hubflow git-remote-branch
+      git 
+      # Autocomplete
+      scala 
+      # autocomplete for ScalaBuildTool http://www.scala-sbt.org/
+      sbt 
+      # Obviously docker autocomplete support
+      docker)
+  echo "\tEnabled Plugins:"
+  for p in $plugins 
+  do
+      echo "\t  - [x] $p"
+  done
+  source $ZSH/oh-my-zsh.sh
 #+END_SRC
 
 ** Preparing Java
@@ -42,8 +65,9 @@ echo "$fg[green][Preparing Java]$reset_color"
 #+END_SRC
 
 #+BEGIN_SRC sh
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_131)
-echo "\tJAVA_HOME := [$JAVA_HOME]"
+JAVA_VERSION=1.8.0_131
+export JAVA_HOME=`/usr/libexec/java_home -v $JAVA_VERSION`
+echo "\tJAVA v$JAVA_VERSION @ $JAVA_HOME"
 #+END_SRC
 
 ** Preparing LLVM & C/C++
@@ -61,12 +85,12 @@ echo "$fg[green][Additional Plugins]$reset_color"
 #+END_SRC
 *** ZSH Highlighting
 #+BEGIN_SRC sh
-echo "\tLoading the ZSH synthax highliting..."
+echo "\t- [x] ZSH Highlighting"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #+END_SRC    
 *** Autojump
 #+BEGIN_SRC sh
-echo "\tConfiguring autojump package..."
+echo "\t- [x] Autojump"
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 #+END_SRC
 ** Aliases
