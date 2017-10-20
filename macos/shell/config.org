@@ -26,7 +26,7 @@ autoload -U colors && colors
  
 ** Preparing ZSH 
 #+BEGIN_SRC sh
-echo "$fg[green][Preparing ZSH]$reset_color"
+echo "\n$fg[green][Preparing ZSH]$reset_color"
 #+END_SRC
 
 #+BEGIN_SRC sh
@@ -51,46 +51,56 @@ echo "$fg[green][Preparing ZSH]$reset_color"
       sbt 
       # Obviously docker autocomplete support
       docker)
-  echo "\tEnabled Plugins:"
+  echo "Enabled Plugins:"
   for p in $plugins 
   do
-      echo "\t  - [x] $p"
+      echo "- [x] $p"
   done
   source $ZSH/oh-my-zsh.sh
 #+END_SRC
 
 ** Preparing Java
 #+BEGIN_SRC sh
-echo "$fg[green][Preparing Java]$reset_color"
+echo "\n$fg[green][Language: Java]$reset_color"
 #+END_SRC
 
 #+BEGIN_SRC sh
 JAVA_VERSION=1.8.0_131
 export JAVA_HOME=`/usr/libexec/java_home -v $JAVA_VERSION`
-echo "\tJAVA v$JAVA_VERSION @ $JAVA_HOME"
+java -version
 #+END_SRC
 
 ** Preparing LLVM & C/C++
 #+BEGIN_SRC sh
-echo "$fg[green][Prepating LLVM & C/C++]$reset_color"
+echo "\n$fg[green][Language: C/C++]$reset_color"
 #+END_SRC
 
 #+BEGIN_SRC sh
-echo "\tUsing LLVM Clang compiler over the Apple's XCode Clang..."
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+clang --version
+#+END_SRC
+** Rust language support
+#+BEGIN_SRC sh
+echo "\n$fg[green][Language: Rust]$reset_color"
+#+END_SRC
+
+#+BEGIN_SRC sh
+source $HOME/.cargo/env
+rustc --version
+cargo --version
 #+END_SRC
 ** Additional plugins
 #+BEGIN_SRC sh
-echo "$fg[green][Additional Plugins]$reset_color"
+echo "\n$fg[green][Additional Plugins]$reset_color"
 #+END_SRC
 *** ZSH Highlighting
 #+BEGIN_SRC sh
-echo "\t- [x] ZSH Highlighting"
+echo "- [x] ZSH Highlighting"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #+END_SRC    
 *** Autojump
 #+BEGIN_SRC sh
-echo "\t- [x] Autojump"
+echo "- [x] Autojump"
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 #+END_SRC
 ** Aliases

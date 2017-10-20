@@ -1,0 +1,18 @@
+cask_args appdir: "/Applications"
+
+# Repositories
+tap "caskroom/cask"
+
+# Bottles
+brew "autojump"
+brew "zsh-syntax-highlighting"
+brew "scala"
+brew "sbt"
+
+brew "llvm"
+
+brew "emacs", args: ["with-cocoa", "with-ctags"]
+
+# Apps 
+cask "blender"
+cask "visual-studio-code"
