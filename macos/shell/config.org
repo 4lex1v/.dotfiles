@@ -12,7 +12,7 @@ Essentials environment variables.
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export EDITOR=emacs
-export HOMEBREW_PREFIX=/usr/local/homebrew
+export HOMEBREW_PREFIX=/usr/local
 #+END_SRC
 
 This sections makes a bunch of fixes:

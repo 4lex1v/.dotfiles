@@ -3,16 +3,32 @@ cask_args appdir: "/Applications"
 # Repositories
 tap "caskroom/cask"
 
-# Bottles
+# CLI Fancies
 brew "autojump"
 brew "zsh-syntax-highlighting"
+
+## CLI Tools
+brew "jq"
+brew "htop"
+brew "awscli"
+brew "ispell"
+brew "the_silver_searcher"
+brew "ranger"
+brew "emacs", args: ["with-cocoa", "with-ctags"]
+brew "git"
+brew "wget"
+
+## LANG :: Scala
 brew "scala"
 brew "sbt"
+brew "ammonite-repl"
 
+## LANG :: C / C++ platform with libraries
+brew "cmake"
 brew "llvm"
-
-brew "emacs", args: ["with-cocoa", "with-ctags"]
+brew "sdl2"
+brew "glfw"
 
 # Apps 
-cask "blender"
 cask "visual-studio-code"
+cask "firefox"
