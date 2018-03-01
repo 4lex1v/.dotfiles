@@ -2,6 +2,7 @@ cask_args appdir: "/Applications"
 
 # Repositories
 tap "caskroom/cask"
+tap "universal-ctags/universal-ctags"
 
 # CLI Fancies
 brew "autojump"
@@ -17,6 +18,7 @@ brew "ranger"
 brew "emacs", args: ["with-cocoa", "with-ctags"]
 brew "git"
 brew "wget"
+brew "universal-ctags", args: ["--HEAD"]
 
 ## LANG :: Scala
 brew "scala"

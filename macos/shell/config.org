@@ -103,6 +103,12 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 echo "- [x] Autojump"
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 #+END_SRC
+*** GNU Global
+#+BEGIN_SRC sh
+echo "- [x] GNU Global"
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=new-ctags
+#+END_SRC
 ** Aliases
 *** Homebrew support
 #+BEGIN_SRC sh
