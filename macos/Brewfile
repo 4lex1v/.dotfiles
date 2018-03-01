@@ -22,13 +22,9 @@ brew "wget"
 brew "scala"
 brew "sbt"
 brew "ammonite-repl"
+brew "scalastyle"
 
 ## LANG :: C / C++ platform with libraries
 brew "cmake"
 brew "llvm"
-brew "sdl2"
-brew "glfw"
-
-# Apps 
-cask "visual-studio-code"
-cask "firefox"
+brew "cppcheck"
